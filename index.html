@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍁 東京 5 天 4 夜秋季賞楓專屬行程表</title>
+    <!-- 引入獨立 CSS 樣式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- ==================== 頁首標題區 ==================== -->
+        <header>
+            <h1>🍁 東京 5 天 4 夜專屬行程表</h1>
+            <p>一年一度出國旅遊趣</p>
+        </header>
+
+        <!-- ==================== 頂部釘選導覽列 ==================== -->
+        <nav class="sticky-nav" id="sticky-nav">
+            <a href="#day-0" class="nav-btn">Day 1 (11/10)</a>
+            <a href="#day-1" class="nav-btn">Day 2 (11/11)</a>
+            <a href="#day-2" class="nav-btn">Day 3 (11/12)</a>
+            <a href="#day-3" class="nav-btn">Day 4 (11/13)</a>
+            <a href="#day-4" class="nav-btn">Day 5 (11/14)</a>
+        </nav>
+
+        <!-- ==================== 第一天～第五天 行程動態渲染區 ==================== -->
+        <!-- JS 將在此處動態注入 Day 1 至 Day 5 的景點與留言內容 -->
+        <div id="itinerary-container"></div>
+    </div>
+
+    <!-- 引入獨立 JavaScript 腳本 -->
+    <script src="script.js"></script>
+</body>
+</html>
