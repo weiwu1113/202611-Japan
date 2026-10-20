@@ -1,74 +1,67 @@
-/* ==================== 全局變數與變色定義（楓葉秋色主題） ==================== */
+/* ==================== 色彩變數（楓葉秋色主題） ==================== */
 :root {
-    --maple-red: #c0392b;       /* 楓葉紅 (主色) */
-    --maple-orange: #d35400;    /* 琥珀橘 (次要主色/按鈕 hover) */
-    --autumn-amber: #e67e22;    /* 暖橘色 (強調色) */
-    --bg-color: #faf5ef;        /* 暖米白/奶茶色背景 */
-    --card-bg: #ffffff;         /* 卡片純白背景 */
-    --text-color: #3e2723;      /* 深暖棕色 (主要文字) */
-    --text-light: #795548;     /* 淺棕色 (次要說明文字) */
-    --border-color: #e0d5c1;   /* 柔和奶茶色邊框 */
-    --nav-bg: rgba(250, 245, 239, 0.92); /* 導覽列半透明背景 */
+    --primary: #c0392b;          /* 楓葉紅 */
+    --amber: #d35400;            /* 琥珀橘 */
+    --hotel-green: #27ae60;       /* 住宿飯店標籤綠 */
+    --airport-blue: #2980b9;      /* 機場標籤藍 */
+    --bg-color: #faf5ef;         /* 米白奶茶底色 */
+    --card-bg: #ffffff;          /* 白色卡片 */
+    --text-color: #3e2723;       /* 深暖棕內文 */
+    --text-muted: #8d6e63;       /* 淺棕色輔助字 */
+    --border-color: #ebdcd0;     /* 暖沙色邊框 */
+    --shadow: 0 4px 12px rgba(62, 39, 35, 0.08);
 }
 
-/* ==================== 基礎重置與佈局 ==================== */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
-    margin: 0;
+    line-height: 1.5;
     padding: 12px;
 }
 
-.container {
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-/* ==================== 頁首標題區 ==================== */
-header {
-    text-align: center;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #a93226, #d35400);
+/* ==================== 頁首 Header ==================== */
+.site-header {
+    background: linear-gradient(135deg, #a93226, #d35400, #e67e22);
     color: #fff8f0;
-    padding: 24px 16px;
+    padding: 20px 16px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.25);
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(169, 50, 38, 0.25);
+    margin-bottom: 12px;
 }
 
-header h1 {
-    margin: 0 0 8px 0;
-    font-size: 1.5rem;
-    font-weight: 700;
+.site-header h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
 }
 
-header p {
-    margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.95;
+.site-header p {
+    font-size: 0.85rem;
+    opacity: 0.9;
 }
 
-/* ==================== 頂部釘選導覽列 (Sticky Nav) ==================== */
+/* ==================== 頂部釘選導覽列 ==================== */
 .sticky-nav {
     position: sticky;
-    top: 10px;
+    top: 8px;
     z-index: 1000;
-    background: var(--nav-bg);
+    background: rgba(250, 245, 239, 0.95);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     padding: 8px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(120, 70, 30, 0.1);
-    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
     display: flex;
     gap: 6px;
     overflow-x: auto;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
     scrollbar-width: none;
 }
 
@@ -77,78 +70,125 @@ header p {
 }
 
 .nav-btn {
-    background-color: #f0e6d6;
+    background: #f0e6df;
     color: var(--text-color);
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: bold;
+    font-size: 0.82rem;
+    font-weight: 700;
     white-space: nowrap;
+    cursor: pointer;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
     flex-shrink: 0;
 }
 
 .nav-btn:hover, .nav-btn.active {
-    background-color: var(--maple-red);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--primary), var(--amber));
+    color: #fff;
 }
 
-/* ==================== 天數卡片 (Day Cards) ==================== */
+/* ==================== 主佈局 (左右雙欄 / 電腦版) ==================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* ==================== 地圖區域 (Leaflet Map) ==================== */
+.map-section {
+    position: sticky;
+    top: 65px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.map-container {
+    width: 100%;
+    height: 75vh;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.map-legend {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+/* ==================== 行程卡片與清單區 ==================== */
+.itinerary-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .day-card {
     background: var(--card-bg);
     border-radius: 12px;
     padding: 18px;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 12px rgba(100, 50, 20, 0.05);
-    scroll-margin-top: 75px;
     border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    scroll-margin-top: 70px;
+    transition: border-color 0.2s;
+}
+
+.day-card:hover {
+    border-color: #dfc4b3;
 }
 
 .day-title {
-    font-size: 1.15rem;
-    font-weight: bold;
-    color: var(--maple-red);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
     border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
-    margin-bottom: 14px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
 }
 
-/* ==================== 行程清單與景點卡片 ==================== */
+/* 景點單項卡片 */
 .item-list {
     list-style: none;
-    padding: 0;
-    margin: 0 0 16px 0;
+    margin-bottom: 14px;
 }
 
 .item-card {
     display: flex;
     align-items: center;
+    background: #fdfaf7;
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--amber);
+    border-radius: 8px;
     padding: 10px 12px;
-    background: #fdfbf7;
-    border-left: 4px solid var(--maple-orange);
     margin-bottom: 8px;
-    border-radius: 4px 8px 8px 4px;
-    border-top: 1px solid #f4ebe0;
-    border-right: 1px solid #f4ebe0;
-    border-bottom: 1px solid #f4ebe0;
     gap: 8px;
-    transition: background 0.2s, transform 0.1s;
+    transition: all 0.2s;
 }
 
-.item-card.dragging {
-    opacity: 0.5;
-    background: #f5e9d9;
+.item-card.hotel-type {
+    border-left-color: var(--hotel-green);
+    background: #f4fbf7;
 }
 
-.drag-handle {
-    cursor: grab;
-    color: #bcaaa4;
-    font-size: 1.1rem;
-    padding-right: 4px;
-    user-select: none;
+.item-card.airport-type {
+    border-left-color: var(--airport-blue);
+    background: #f0f7bc;
+}
+
+.item-card:hover, .item-card.active-spot {
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(192, 57, 43, 0.15);
+    border-color: var(--primary);
 }
 
 .item-info {
@@ -157,210 +197,132 @@ header p {
 }
 
 .item-name {
-    font-weight: bold;
-    font-size: 0.95rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
     color: var(--text-color);
-    word-break: break-word;
 }
 
-.item-desc {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    margin-top: 2px;
-    word-break: break-word;
-}
-
-.item-link {
-    display: inline-block;
-    margin-left: 6px;
-    color: var(--maple-red);
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.item-link:hover {
+.item-name:hover {
+    color: var(--primary);
     text-decoration: underline;
 }
 
-/* 行程排序與刪除按鈕 */
-.item-actions {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
+.item-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
 
-.btn-action {
-    background: #ffffff;
-    color: #5d4037;
-    border: 1px solid var(--border-color);
+.btn-locate {
+    background: #fbeee6;
+    color: var(--primary);
+    border: 1px solid #f5cba7;
     padding: 4px 8px;
     border-radius: 4px;
-    cursor: pointer;
     font-size: 0.75rem;
-}
-
-.btn-action:hover {
-    background-color: #f5ebe0;
-}
-
-.btn-delete {
-    background-color: #fbe9e7;
-    color: var(--maple-red);
-    border-color: #ffccbc;
-}
-
-.btn-delete:hover {
-    background-color: #ffab91;
-    color: #ffffff;
-}
-
-/* ==================== 新增行程表單 ==================== */
-.add-form {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.add-form input {
-    padding: 8px 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 0.85rem;
-    outline: none;
-    background-color: #fffefb;
-    color: var(--text-color);
-}
-
-.add-form input:focus {
-    border-color: var(--maple-red);
-}
-
-.add-form input[type="text"] {
-    flex: 2;
-    min-width: 130px;
-}
-
-.add-form input[type="url"] {
-    flex: 1;
-    min-width: 120px;
-}
-
-.btn-add {
-    background-color: var(--maple-orange);
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 0.85rem;
-    flex-shrink: 0;
-}
-
-.btn-add:hover {
-    background-color: #b94600;
-}
-
-/* ==================== 討論留言區 ==================== */
-.comments-section {
-    background-color: #f7f1e5;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ebdccb;
-}
-
-.comments-section h4 {
-    margin: 0 0 8px 0;
-    font-size: 0.88rem;
-    color: #5d4037;
-}
-
-.comments-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 10px 0;
-}
-
-.comment-item {
-    background: white;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-bottom: 6px;
-    font-size: 0.82rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    word-break: break-word;
-    border: 1px solid #f0e6d6;
-}
-
-.comment-author {
-    font-weight: bold;
-    color: var(--maple-red);
+    font-weight: 700;
     margin-right: 4px;
 }
 
-.comment-form {
-    display: flex;
-    gap: 6px;
+.btn-locate:hover {
+    background: var(--primary);
+    color: white;
 }
 
-.comment-form input {
+.item-actions {
+    display: flex;
+    gap: 3px;
+}
+
+.btn-action {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    cursor: pointer;
+}
+
+.btn-delete {
+    color: var(--primary);
+    border-color: #f5c6cb;
+}
+
+/* 表單與留言區 */
+.add-form, .comment-form {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.add-form input, .comment-form input {
     padding: 6px 8px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
+    outline: none;
 }
 
-.comment-form input:nth-child(1) {
-    width: 70px;
-    flex-shrink: 0;
+.add-form input:focus, .comment-form input:focus {
+    border-color: var(--amber);
 }
 
-.comment-form input:nth-child(2) {
-    flex-grow: 1;
-}
-
-.btn-comment {
-    background-color: #6d4c41;
+.btn-add {
+    background: linear-gradient(135deg, #d35400, #e67e22);
     color: white;
     border: none;
     padding: 6px 12px;
     border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 0.82rem;
-    flex-shrink: 0;
 }
 
-.btn-comment:hover {
-    background-color: #4e342e;
+.comments-section {
+    background: #fbf4ee;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: 1px solid var(--border-color);
 }
 
-/* ==================== RWD 響應式手機優化 ==================== */
-@media (max-width: 600px) {
-    body {
-        padding: 6px;
+.comments-list {
+    list-style: none;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.comment-item {
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.btn-comment {
+    background: #6d4c41;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* ==================== 響應式佈局 (Mobile RWD) ==================== */
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 100%;
     }
-    header {
-        padding: 18px 12px;
+    .map-section {
+        position: relative;
+        top: 0;
+        margin-bottom: 16px;
     }
-    header h1 {
-        font-size: 1.25rem;
-    }
-    .item-card {
-        flex-wrap: wrap;
-    }
-    .item-actions {
-        width: 100%;
-        justify-content: flex-end;
-        margin-top: 6px;
-        border-top: 1px dashed var(--border-color);
-        padding-top: 6px;
-    }
-    .add-form, .comment-form {
-        flex-direction: column;
-    }
-    .add-form input, .comment-form input, .btn-add, .btn-comment {
-        width: 100%;
+    .map-container {
+        height: 40vh;
     }
 }

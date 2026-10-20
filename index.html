@@ -3,34 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍁 東京 5 天 4 夜秋季賞楓專屬行程表</title>
-    <!-- 引入獨立 CSS 樣式表 -->
+    <title>🍁 東京 5 天 4 夜秋季賞楓地圖行程導覽網站</title>
+    
+    <!-- Leaflet.js 地圖樣式庫 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- FontAwesome 圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- 自訂獨立 CSS 樣式表 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <!-- ==================== 頁首標題區 ==================== -->
-        <header>
-            <h1>🍁 東京 5 天 4 夜專屬行程表</h1>
-            <p>一年一度出國旅遊趣</p>
-        </header>
+    <!-- ==================== 頁首 Header 區塊 ==================== -->
+    <header class="site-header">
+        <h1>🍁 東京 5 天 4 夜秋季賞楓地圖導覽</h1>
+        <p>一年一度出國旅遊趣</p>
+    </header>
 
-        <!-- ==================== 頂部釘選導覽列 ==================== -->
-        <nav class="sticky-nav" id="sticky-nav">
-            <a href="#day-0" class="nav-btn">Day 1 (11/10)</a>
-            <a href="#day-1" class="nav-btn">Day 2 (11/11)</a>
-            <a href="#day-2" class="nav-btn">Day 3 (11/12)</a>
-            <a href="#day-3" class="nav-btn">Day 4 (11/13)</a>
-            <a href="#day-4" class="nav-btn">Day 5 (11/14)</a>
-        </nav>
+    <!-- ==================== 頂部釘選導覽列 (Sticky Nav) ==================== -->
+    <nav class="sticky-nav" id="sticky-nav">
+        <button class="nav-btn active" onclick="filterMapDay('all')"><i class="fa-solid fa-earth-asia"></i> 全景地圖</button>
+        <button class="nav-btn" onclick="filterMapDay(0)"><i class="fa-solid fa-leaf"></i> Day 1 (11/10)</button>
+        <button class="nav-btn" onclick="filterMapDay(1)"><i class="fa-solid fa-leaf"></i> Day 2 (11/11)</button>
+        <button class="nav-btn" onclick="filterMapDay(2)"><i class="fa-solid fa-leaf"></i> Day 3 (11/12)</button>
+        <button class="nav-btn" onclick="filterMapDay(3)"><i class="fa-solid fa-leaf"></i> Day 4 (11/13)</button>
+        <button class="nav-btn" onclick="filterMapDay(4)"><i class="fa-solid fa-leaf"></i> Day 5 (11/14)</button>
+    </nav>
 
-        <!-- ==================== 第一天～第五天 行程動態渲染區 ==================== -->
-        <!-- JS 將在此處動態注入 Day 1 至 Day 5 的景點與留言內容 -->
-        <div id="itinerary-container"></div>
+    <!-- ==================== 主內容區：左右雙欄佈局 (RWD) ==================== -->
+    <div class="main-layout">
+        
+        <!-- 左側/上方：互動動態地圖區域 (Interactive Leaflet Map) -->
+        <section class="map-section">
+            <div id="map" class="map-container"></div>
+            <div class="map-legend">
+                <span><i class="fa-solid fa-location-dot" style="color: #c0392b;"></i> 行程景點</span>
+                <span><i class="fa-solid fa-hotel" style="color: #27ae60;"></i> 住宿飯店</span>
+                <span><i class="fa-solid fa-plane" style="color: #2980b9;"></i> 機場交通</span>
+            </div>
+        </section>
+
+        <!-- 右側/下方：行程細節卡片與留言區 (Itinerary Cards) -->
+        <section class="itinerary-section" id="itinerary-container">
+            <!-- JS 動態注入 Day 1 ~ Day 5 內容 -->
+        </section>
+
     </div>
 
-    <!-- 引入獨立 JavaScript 腳本 -->
+    <!-- Leaflet.js 地圖核心程式庫 -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- 自訂獨立 JavaScript 腳本 -->
     <script src="script.js"></script>
 </body>
 </html>
